@@ -5,17 +5,17 @@
  * @license	GNU Lesser General Public License <http://opensource.org/licenses/lgpl-license.php>
  */
 class KnightManager {
-	public function show_version() {
+	public function get_version() {
 		$version = '1.0.0 Pre-Alpha 1';
 		echo $version;
 	}
 	
-	public function show_version_code() {
+	public function get_version_code() {
 		$version_code = 1000; // Wichtig für die Kompatibilität der Plugins und Styles
 		echo $version_code;
 	}
 	
-	public function show_status() {
+	public function get_status() {
 		$status = 0; // 0 = Test, 1 = Final
 		
 		if ($status == 0) {
@@ -38,6 +38,12 @@ class KnightManager {
 		if (!extension_loaded('pdo')) {
 			die('System requirements: PHP extension pdo');
 		}
+	}
+	
+	public function db_connect() {
+		require_once('mysql_login.php');
+		
+		$c = new PDO('mysql:host=".$dbhost.";dbname=".$dbname."', '".$dbuser."', '".$dbpassword."');
 	}
 }
 ?>
