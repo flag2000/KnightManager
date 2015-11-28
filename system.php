@@ -19,7 +19,7 @@ class KnightManager {
 		$status = 0; // 0 = Test, 1 = Final
 		
 		if ($status == 0) {
-			require_once('./template/show_status.html');
+			require_once('./template/get_status.html');
 		}
 	}
 	
