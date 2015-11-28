@@ -45,5 +45,9 @@ class KnightManager {
 		
 		$c = new PDO('mysql:host=".$dbhost.";dbname=".$dbname."', '".$dbuser."', '".$dbpassword."');
 	}
+	
+	public function db_connect_close() {
+		$c = null;
+	}
 }
 ?>
