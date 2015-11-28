@@ -43,7 +43,7 @@ class KnightManager {
 	public function db_connect() {
 		require_once('mysql_login.php');
 		
-		$c = new PDO('mysql:host=".$dbhost.";dbname=".$dbname."', '".$dbuser."', '".$dbpassword."');
+		$c = new PDO("mysql:host=".$dbhost.";dbname=".$dbname."", "".$dbuser."", "".$dbpassword."");
 	}
 	
 	public function db_connect_close() {
