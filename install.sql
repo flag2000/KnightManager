@@ -13,3 +13,7 @@ CREATE TABLE km_user_group (
 	groupID INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	group_name VARCHAR(255) NOT NULL DEFAULT ''
 );
+
+INSERT INTO km_user_group (groupID, group_name) VALUES (1, 'Administrator');
+INSERT INTO km_user_group (groupID, group_name) VALUES (2, 'Moderator');
+INSERT INTO km_user_group (groupID, group_name) VALUES (3, 'Mitglied');
