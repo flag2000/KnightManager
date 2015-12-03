@@ -43,7 +43,13 @@ class KnightManager {
 	public function db_connect() {
 		require_once('mysql_login.php');
 		
-		$c = new PDO("mysql:host=".$dbhost.";dbname=".$dbname."", "".$dbuser."", "".$dbpassword."");
+		try {
+			$c = new PDO("mysql:host=".$dbhost.";dbname=".$dbname."", "".$dbuser."", "".$dbpassword."");
+		}
+		catch (PDOException $e) {
+			print_r($e);
+		}
+		$c->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	}
 	
 	public function db_connect_close() {
@@ -53,10 +59,12 @@ class KnightManager {
 	public function login($username, $password) {
 		$this->db_connect();
 		
-		$query = 'SELECT username, password, activated FROM km_user';
-		
-		foreach ($c->query($query) as $data) {
-			print_r($data);
+		try {
+			$query = 'SELECT username, password, activated FROM km_user';
+			$data = $c->query($query);
+		}
+		catch (PDOException $e) {
+			print_r($e);
 		}
 		
 		$this->db_connect_close();
@@ -65,10 +73,12 @@ class KnightManager {
 	public function login_acp($username, $password) {
 		$this->db_connect();
 		
-		$query = 'SELECT username, password, activated, user_group FROM km_user';
-		
-		foreach ($c->query($query) as $data) {
-			print_r($data);
+		try {
+			$query = 'SELECT username, password, activated, user_group FROM km_user';
+			$data = $c->query($query);
+		}
+		catch (PDOException $e) {
+			print_r($e);
 		}
 		
 		$this->db_connect_close();
