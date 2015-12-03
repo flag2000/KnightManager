@@ -51,7 +51,27 @@ class KnightManager {
 	}
 	
 	public function login($username, $password) {
-		// Work
+		$this->db_connect();
+		
+		$query = 'SELECT username, password, activated FROM km_user';
+		
+		foreach ($c->query($query) as $data) {
+			print_r($data);
+		}
+		
+		$this->db_connect_close();
+	}
+	
+	public function login_acp($username, $password) {
+		$this->db_connect();
+		
+		$query = 'SELECT username, password, activated, user_group FROM km_user';
+		
+		foreach ($c->query($query) as $data) {
+			print_r($data);
+		}
+		
+		$this->db_connect_close();
 	}
 }
 ?>
