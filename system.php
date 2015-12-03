@@ -49,5 +49,9 @@ class KnightManager {
 	public function db_connect_close() {
 		$c = null;
 	}
+	
+	public function login($username, $password) {
+		// Work
+	}
 }
 ?>
