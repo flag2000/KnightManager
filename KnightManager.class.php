@@ -49,6 +49,7 @@ class KnightManager {
 		catch (PDOException $e) {
 			print_r($e);
 		}
+		
 		$c->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	}
 	
@@ -66,9 +67,11 @@ class KnightManager {
 			if ($data->username !== $username OR $data->email !== $email) {
 				require_once('./template/login_wrong_username.html');
 			}
-			
-			if ($data->password !== $password) {
+			else if ($data->password !== $password) {
 				require_once('./template/login_wrong_password.html');
+			}
+			else {
+				header('Location: user.php');
 			}
 		}
 		catch (PDOException $e) {
@@ -88,9 +91,11 @@ class KnightManager {
 			if ($data->username !== $username OR $data->email !== $email) {
 				require_once('./template/login_wrong_username.html');
 			}
-			
-			if ($data->password !== $password) {
+			else if ($data->password !== $password) {
 				require_once('./template/login_wrong_password.html');
+			}
+			else {
+				header('Location: index.php');
 			}
 		}
 		catch (PDOException $e) {
