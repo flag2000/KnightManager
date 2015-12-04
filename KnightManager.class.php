@@ -56,12 +56,20 @@ class KnightManager {
 		$c = null;
 	}
 	
-	public function login($username, $password) {
+	public function login($username, $email, $password) {
 		$this->db_connect();
 		
 		try {
 			$query = 'SELECT username, password, email, activated FROM km_user';
 			$data = $c->query($query);
+			
+			if ($data->username !== $username OR $data->email !== $email) {
+				require_once('./template/login_wrong_username.html');
+			}
+			
+			if ($data->password !== $password) {
+				require_once('./template/login_wrong_password.html');
+			}
 		}
 		catch (PDOException $e) {
 			print_r($e);
@@ -70,12 +78,20 @@ class KnightManager {
 		$this->db_connect_close();
 	}
 	
-	public function login_acp($username, $password) {
+	public function login_acp($username, $email, $password) {
 		$this->db_connect();
 		
 		try {
 			$query = 'SELECT username, password, email, activated, user_group FROM km_user';
 			$data = $c->query($query);
+			
+			if ($data->username !== $username OR $data->email !== $email) {
+				require_once('./template/login_wrong_username.html');
+			}
+			
+			if ($data->password !== $password) {
+				require_once('./template/login_wrong_password.html');
+			}
 		}
 		catch (PDOException $e) {
 			print_r($e);
