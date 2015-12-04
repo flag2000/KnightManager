@@ -60,7 +60,7 @@ class KnightManager {
 		$this->db_connect();
 		
 		try {
-			$query = 'SELECT username, password, activated FROM km_user';
+			$query = 'SELECT username, password, email, activated FROM km_user';
 			$data = $c->query($query);
 		}
 		catch (PDOException $e) {
@@ -74,7 +74,7 @@ class KnightManager {
 		$this->db_connect();
 		
 		try {
-			$query = 'SELECT username, password, activated, user_group FROM km_user';
+			$query = 'SELECT username, password, email, activated, user_group FROM km_user';
 			$data = $c->query($query);
 		}
 		catch (PDOException $e) {
