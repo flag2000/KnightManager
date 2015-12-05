@@ -67,7 +67,7 @@ class KnightManager {
 			if ($data->username !== $username OR $data->email !== $email) {
 				require_once('./template/login_wrong_username.html');
 			}
-			else if ($data->password !== $password) {
+			else if (!password_verify($password, $data->password)) {
 				require_once('./template/login_wrong_password.html');
 			}
 			else {
@@ -91,7 +91,7 @@ class KnightManager {
 			if ($data->username !== $username OR $data->email !== $email) {
 				require_once('./template/login_wrong_username.html');
 			}
-			else if ($data->password !== $password) {
+			else if (!password_verify($password, $data->password)) {
 				require_once('./template/login_wrong_password.html');
 			}
 			else {
